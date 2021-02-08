@@ -1008,7 +1008,10 @@ public:
         //----------------------------------------------------
 
         // ### Variables, Part 2: ###
-        po["LIBDIRNAME"] = po["prefix"] + "/lib/" + getName() + "_" + po["LIBTYPE_SUFFIX"] + cfg["CFG"];
+        po["LIBDIRNAME"] = po["prefix"] + "/lib/" + getName() + "_";
+        if (!cfg["COMPILER_VERSION"].empty())
+            po["LIBDIRNAME"] += cfg["COMPILER_VERSION"] + "_";
+        po["LIBDIRNAME"] += po["LIBTYPE_SUFFIX"] + cfg["CFG"];
 
         po["SETUPHDIR"] = po["LIBDIRNAME"] + "/" + po["PORTNAME"] + po["WXUNIVNAME"];
         po["SETUPHDIR"] += po["WXUNICODEFLAG"] + po["WXDEBUGFLAG"];
